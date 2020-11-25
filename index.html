@@ -39,7 +39,7 @@
 		  mapbox: {
 			zoom: 16.26471727649429, 
 			pitch: 0, 
-			style: 'carto-positron', 
+			style: 'satellite',
 			center: {
 			  lat: 21.274110921130642, 
 			  lon: -157.7614683913925
@@ -48,6 +48,11 @@
 		  }, 
 		  autosize: true
 		};
+
+    Plotly.setPlotConfig({
+      mapboxAccessToken: "pk.eyJ1IjoibGV2eWplYW4iLCJhIjoiY2tmZzRrdTBhMDF5eTJxcHAyc2oyeTUxbyJ9.4gtxzCh3vsajA99VB5fk7g"
+    })
+
 		Plotly.plot('plotly-div', {
 		  data: data,
 		  layout: layout,
