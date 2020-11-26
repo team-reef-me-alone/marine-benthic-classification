@@ -13,12 +13,36 @@
 <body>
 <div id="pieExample"></div>
 <script>
-  Plotly.d3.csv("benthicclassification.csv", function(err, rows){
+  Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/benthicclassification.csv', function(err, rows){
 
+    //sg,ns,sc,ca,cc,ma,ta,ua,ev,gc,nm,no
     function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
+
     }
 
+    var zones = unpack(rows,'Zone');
+    var types = unpack(rows, 'Livingcover');
+    console.log(zones);
+
+    var info = [zones,types];
+    var labels = ["Macroalgae", "Turf Algae", "None", "rubble"]
+
+    console.log(info);
+
+    var dataA = [{
+      labels: labels,
+      values: [103, 49, 806, 1 ],
+      type: 'pie'
+
+    }];
+
+    var layout = {
+      height: 500,
+      width: 500
+    };
+
+    Plotly.newPlot('pieExample', dataA, layout);
 
   });
 </script>
