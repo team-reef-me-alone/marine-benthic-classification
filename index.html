@@ -9,10 +9,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 </head>
-</head>
+<style>
+.column {
+width: 40%;
+padding: 10px;
+}
+.border-1{
+  border-style: solid;
+  border-width: 1px;
+  border-color: 00005F;
+}
+.heightInc{
+height: 800px
+}
+.widthDec{
+width:60%
+}
+.conclusion{
+	text-align: left;
+	font-size: 17px;
+}
+.pictureCorrection{
+	height: 600px
+}
+.imgCorrection{
+vertical-align: middle;
+}
+.separator{
+background-color:#F0F0F0;
+}
+</style>
 <body>
-<div id="plotly-div"></div>
-     <script>
+	<div class="separator">
+		<h1 align="center">
+			Marine Benthic Classification
+		</h1>
+	</div>
+	<hr>
+	<div>
+	<div class="ui center aligned grid relaxed ">
+		<div class="row">
+			<div class="sixteen wide column border-1 heightInc">
+				<div class='heightInc' id="plotly-div"></div>
+				  <script>
 		trace1 = {
 		  meta: {columnNames: {
 			  lat: 'A', 
@@ -58,5 +97,74 @@
 		  layout: layout,
 		});	
     </script>
+			</div>
+		</div>
+		<div class="row">
+			<div class="eight wide column border-1">
+			</div>
+			<div class="eight wide column border-1">
+			</div>
+		</div>
+		<div>
+			<h2 align="center">
+				Conclusion
+			</h2>
+		</div>
+		<div class="row">
+		</div>
+	</div>
+	<hr>
+	<div class="separator">
+		<h1 align="center">
+			Topic 2
+		</h1>
+	</div>
+	<hr>
+	<div class="ui center aligned grid relaxed ">
+		<div class="row">
+			<div class="eight wide column border-1">
+			</div>
+			<div class="eight wide column border-1">
+			</div>
+		<div>
+			<h2 align="center">
+				Conclusion
+			</h2>
+		</div>
+		<div class="row">
+		</div>
+	</div>
+	<hr>
+	<div class="separator">
+		<h1 align="center">
+			Topic 3
+		</h1>
+	</div>
+	<hr>
+	<div class="ui grid relaxed">
+		<div class="row">
+			<div class="eight wide column border-1">
+			</div>
+			<div class="eight wide column border-1">
+			</div>
+		</div>
+		<div class="row">
+			<div class="eight wide column border-1">
+			</div>
+			<div class="eight wide column border-1">
+			</div>
+		</div>
+		<div class="row">
+			<div class="sixteen wide column border-1">
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="separator">
+		<h1 align="center">
+			About
+		</h1>
+	</div>
+	<hr>
 </body>
 </html>
