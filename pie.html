@@ -15,6 +15,12 @@
 <script>
   Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/benthicclassification.csv', function(err, rows){
 
+    function makeplot() {
+      Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/2014_apple_stock.csv", function(data){ processData(data) } );
+
+    };
+
+
     //sg,ns,sc,ca,cc,ma,ta,ua,ev,gc,nm,no
     function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
@@ -26,16 +32,23 @@
     console.log(zones);
 
     var info = [zones,types];
-    var labels = ["Macroalgae", "Turf Algae", "None", "rubble"]
+    var labelA = ["Macroalgae", "Turf Algae", "None", "rubble"];
+    var labelB = ["non-scleractinian coral", "Macroalgae", "Turf Algae", "None", "scleractinian coral"]
 
     console.log(info);
 
     var dataA = [{
-      labels: labels,
+      labels: labelA,
       values: [103, 49, 806, 1 ],
       type: 'pie'
 
     }];
+    var dataB = [{
+      labels: labels,
+      values: [15,256, 97, 621],
+      type: 'pie'
+
+    }]
 
     var layout = {
       height: 500,
