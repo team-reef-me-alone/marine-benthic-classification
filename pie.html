@@ -13,11 +13,18 @@
 <body>
 <div id="pieExample"></div>
 <script>
+  //Make new trace where:
+  //seperate by zone
+  //look over living cover codes
+  //is that code in trace? if not, add (as a header)
+  //if it is, add to count
+  //Graphing:
+  //use headers as labels
+  //use count as value 
   Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/benthicclassification.csv', function(err, rows){
 
     function makeplot() {
-      Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/2014_apple_stock.csv", function(data){ processData(data) } );
-
+      Plotly.d3.csv("https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/livingCoverCodes.csv", function(data){ processData(data) } );
     };
 
 
