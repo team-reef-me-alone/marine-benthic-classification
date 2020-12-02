@@ -29,11 +29,14 @@
 
     }
 
-    //data arrays for all zones
+    var codes = {sg: "seagrass", ns: "nonscleractinian coral", sc: "scleractinian coral", ca: "coralline algae", cc: "coral", ma: "macroalgae", ta: "turf algae", ua: "unclassfied algae", ev: "emergent vegetation", gc: "giant clam", nm: "other nonmobile inverts", no: "none", uc: "unclassified"};
+
+    console.log(codes);
+
+      //data arrays for all zones
     var zoneA = [];
     var zoneB = [];
     var zoneC = [];
-
 
     for (i = 0; i < rows.length; i++) {
       if (rows[i]['Zone'] == 'A') {
@@ -46,9 +49,6 @@
     };
 
     console.log(zoneA);
-
-
-
 
 
 
