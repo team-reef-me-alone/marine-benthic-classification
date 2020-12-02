@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 </head>
 <body>
-<div id="pieExample"></div>
+<div id="barExample"></div>
 <script>
   //Make new trace where:
   //seperate by zone
@@ -23,17 +23,16 @@
   //use count as value 
   Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/benthicclassification.csv', function(err, rows){
 
-    //sg,ns,sc,ca,cc,ma,ta,ua,ev,gc,nm,no
     function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
 
     }
 
-    var codes = {sg: "seagrass", ns: "nonscleractinian coral", sc: "scleractinian coral", ca: "coralline algae", cc: "coral", ma: "macroalgae", ta: "turf algae", ua: "unclassfied algae", ev: "emergent vegetation", gc: "giant clam", nm: "other nonmobile inverts", no: "none", uc: "unclassified"};
+    var codes = [{code: "sg", cover: "seagrass"}, {code: "ns" , cover: "nonscleractinian coral"}, {code: "sc", cover: "scleractinian coral"}, {code: "ca", cover: "coralline algae"}, {code: "cc", cover: "coral"}, {code: "ma", cover: "macroalgae"}, {code: "ta", cover: "turf algae"}, {code: "ua", cover: "unclassfied algae"}, {code: "ev", cover: "emergent vegetation"}, {code: "gc", cover: "giant clam"}, {code: "nm", cover: "nonmobile inverts"}, {code: "no", cover: "none"}, {code: "uc", cover: "unclassified"}];
 
     console.log(codes);
 
-      //data arrays for all zones
+    //data arrays for all zones
     var zoneA = [];
     var zoneB = [];
     var zoneC = [];
@@ -48,31 +47,48 @@
       };
     };
 
-    console.log(zoneA);
+    function getData(lc, lcArray) {
+      var num = 0;
+      for (i = 0; i < lcArray.length; i++) {
+        if (lc == lcArray[i]['Livingcover']) {
+          num++;
+        }
+      }
+      return num;
+    }
 
+    var traceA= {
+      x: unpack(codes, 'cover'),
+      y: unpack(codes, 'code').map(function(x) {return getData(x, zoneA)}),
+      name: 'Zone A',
+      type: 'bar'
 
-
-    /**
-    var dataA = [{
-      labels: labelA,
-      values: [103, 49, 806, 1 ],
-      type: 'pie'
-
-    }];
-    var dataB = [{
-      labels: labels,
-      values: [15,256, 97, 621],
-      type: 'pie'
-
-    }]
-
-    var layout = {
-      height: 500,
-      width: 500
     };
 
-    Plotly.newPlot('pieExample', dataA, layout);
-     **/
+    var traceB= {
+      x: unpack(codes, 'cover'),
+      y: unpack(codes, 'code').map(function(x) {return getData(x, zoneB)}),
+      name: 'Zone B',
+      type: 'bar'
+
+    };
+
+    var traceC= {
+      x: unpack(codes, 'cover'),
+      y: unpack(codes, 'code').map(function(x) {return getData(x, zoneC)}),
+      name: 'Zone C',
+      type: 'bar'
+
+    };
+
+    var data = [traceA,traceB,traceC];
+    console.log(data);
+
+    var layout = {
+      barmode: 'group'
+    };
+
+    Plotly.newPlot('barExample', data, layout);
 
   });
 </script>
