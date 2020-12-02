@@ -23,27 +23,40 @@
   //use count as value 
   Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/benthicclassification.csv', function(err, rows){
 
-    function makeplot() {
-      Plotly.d3.csv("https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/livingCoverCodes.csv", function(data){ processData(data) } );
-    };
-
-
     //sg,ns,sc,ca,cc,ma,ta,ua,ev,gc,nm,no
     function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
 
     }
 
-    var zones = unpack(rows,'Zone');
-    var types = unpack(rows, 'Livingcover');
-    console.log(zones);
+    Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/benthicclassification.csv', function(err, rows) {
+    });
 
-    var info = [zones,types];
-    var labelA = ["Macroalgae", "Turf Algae", "None", "rubble"];
-    var labelB = ["non-scleractinian coral", "Macroalgae", "Turf Algae", "None", "scleractinian coral"]
 
-    console.log(info);
+      //data arrays for all zones
+    var zoneA = [];
+    var zoneB = [];
+    var zoneC = [];
 
+
+    for (i = 0; i < rows.length; i++) {
+      if (rows[i]['Zone'] == 'A') {
+        zoneA.push(rows[i]);
+      } else if (rows[i]['Zone'] == 'B') {
+        zoneB.push(rows[i]);
+      } else {
+        zoneC.push(rows[i]);
+      };
+    };
+
+    console.log(zoneA);
+
+
+
+
+
+
+    /**
     var dataA = [{
       labels: labelA,
       values: [103, 49, 806, 1 ],
@@ -63,6 +76,7 @@
     };
 
     Plotly.newPlot('pieExample', dataA, layout);
+     **/
 
   });
 </script>

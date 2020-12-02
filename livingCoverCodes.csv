@@ -1,7 +1,7 @@
 Living Cover,code
 seagrass,sg
 non-scleractinian coral,ns
-scleractinian coral**,sc
+scleractinian coral,sc
 coralline algae,ca
 coral or coralline algae,cc
 macroalgae,ma
@@ -11,6 +11,4 @@ emergent vegetation,ev
 Giant Clam,gc
 Other non-mobile inverts,nm
 None,no
-,
-,
 unclassified,uc
