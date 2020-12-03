@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://d3js.org/d3.v6.js"></script>
+
+  <title>Bar Example</title>
+</head>
+<body>
+  <canvas id="myBarChart"></canvas>
+  <script>
+    function makeChart(items) {
+      var codes = [{code: "sg", cover: "seagrass"}, {code: "ns" , cover: "nonscleractinian coral"}, {code: "sc", cover: "scleractinian coral"}, {code: "ca", cover: "coralline algae"}, {code: "cc", cover: "coral"}, {code: "ma", cover: "macroalgae"}, {code: "ta", cover: "turf algae"}, {code: "ua", cover: "unclassfied algae"}, {code: "ev", cover: "emergent vegetation"}, {code: "gc", cover: "giant clam"}, {code: "nm", cover: "nonmobile inverts"}, {code: "no", cover: "none"}, {code: "uc", cover: "unclassified"}];
+
+      function unpack(items, key) {
+        return items.map(function(row) { return row[key]; });
+      }
+
+      function getData(lc, lcArray) {
+        var num = 0;
+        for (i = 0; i < lcArray.length; i++) {
+          if (lc == lcArray[i]['Livingcover']) {
+            num++;
+          }
+        }
+        return num;
+      }
+
+      //data arrays for all zones
+      var zoneA = [];
+      var zoneB = [];
+      var zoneC = [];
+
+      for (i = 0; i < items.length; i++) {
+        if (items[i].Zone== 'A') {
+          zoneA.push(items[i]);
+        } else if (items[i].Zone == 'B') {
+          zoneB.push(items[i]);
+        } else {
+          zoneC.push(items[i]);
+        };
+      };
+
+      var labels = unpack(codes, 'cover');
+      var dataA = unpack(codes, 'code').map(function(x) {return getData(x, zoneA)});
+      var dataB = unpack(codes, 'code').map(function(x) {return getData(x, zoneB)});
+      var dataC = unpack(codes, 'code').map(function(x) {return getData(x, zoneC)});
+
+      console.log(dataA);
+      console.log(dataB);
+      console.log(dataC);
+      console.log(labels);
+
+      var ctx = document.getElementById('myBarChart');
+      var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Zone A',
+            data: dataA,
+            backgroundColor: '#DBC63D',
+          },{
+            label: 'Zone B',
+            data: dataB,
+            backgroundColor: '#53D1DB',
+          }, {
+            label: 'Zone C',
+            data: dataC,
+            backgroundColor: '#DB2792',
+          }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Living Covers by Zone',
+            fontSize: 18,
+          },
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Amount'
+              }
+            }],
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Species'
+              }
+            }]
+          }
+
+        }
+      });
+
+
+    }
+
+    // Request data using D3
+    d3.csv("https://raw.githubusercontent.com/team-reef-me-alone/marine-benthic-classification/plotlyPie/benthicclassification.csv").then(makeChart);
+
+  </script>
+</body>
+</html>
