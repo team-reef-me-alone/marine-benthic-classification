@@ -76,9 +76,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
 
   var data = [zoneA,zoneB,zoneC].concat(newTraces);
 
-  console.log(data);
 
-  var myPlot = document.getElementById('barExample');
+  var myPlot = document.getElementById('barGraphs');
 
   var button_layer_1_height = 1.12
   var button_layer_2_height = 1.0
@@ -171,7 +170,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
 
 
 
-  Plotly.newPlot('barExample', data, layout, {displayModeBar: false});
+  Plotly.newPlot('barGraphs', data, layout, {displayModeBar: false});
 
 
   myPlot.on('plotly_click', function(data){
