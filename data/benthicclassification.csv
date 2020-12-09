@@ -1,4 +1,4 @@
-Site,Zone,Transect,Photocount,PhotoID,GPS,GPS,Point,Abiotic (m/s/rb/b/rk/mm),Living cover(sg/ns/sc/ca/cc/ma/ta/ua/ev/nm),Genus,Species,Morphology,Notes,Species to count,count,n-1,n(n-1),Diversity
+Site,Zone,Transect,Photocount,PhotoID,Lat,Lon,Point,Abiotic (m/s/rb/b/rk/mm),Living cover(sg/ns/sc/ca/cc/ma/ta/ua/ev/nm),Genus,Species,Morphology,Notes,Species to count,count,n-1,n(n-1),Diversity
 Wailupe,A,1,1,DSCF1147,21.27578,-157.76205,1,rb,ma,Gracilaria,salicornia,b,,Gracilaria salicornia,25,24,600,0
 Wailupe,A,1,1,DSCF1147,21.27578,-157.76205,2,rb,ma,Gracilaria,salicornia,b,,Articulated Coralline Algae,0,-1,0,
 Wailupe,A,1,1,DSCF1147,21.27578,-157.76205,3,rb,ma,Gracilaria,salicornia,b,,Acanthophora spicifera,0,-1,0,
