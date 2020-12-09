@@ -33,17 +33,19 @@
     console.log(codes);
 
     //data arrays for all zones
-    var zoneA = [];
-    var zoneB = [];
-    var zoneC = [];
+    var A = [];
+    var B = [];
+    var C = [];
+
+    var xVals = unpack(codes, 'cover');
 
     for (i = 0; i < rows.length; i++) {
       if (rows[i]['Zone'] == 'A') {
-        zoneA.push(rows[i]);
+        A.push(rows[i]);
       } else if (rows[i]['Zone'] == 'B') {
-        zoneB.push(rows[i]);
+        B.push(rows[i]);
       } else {
-        zoneC.push(rows[i]);
+        C.push(rows[i]);
       };
     };
 
@@ -57,38 +59,152 @@
       return num;
     }
 
-    var traceA= {
-      x: unpack(codes, 'cover'),
-      y: unpack(codes, 'code').map(function(x) {return getData(x, zoneA)}),
+    var zoneA= {
+      x: xVals,
+      y: unpack(codes, 'code').map(function(x) {return getData(x, A)}),
       name: 'Zone A',
       type: 'bar'
 
     };
 
-    var traceB= {
-      x: unpack(codes, 'cover'),
-      y: unpack(codes, 'code').map(function(x) {return getData(x, zoneB)}),
+    var zoneB= {
+      x: xVals,
+      y: unpack(codes, 'code').map(function(x) {return getData(x, B)}),
       name: 'Zone B',
       type: 'bar'
 
     };
 
-    var traceC= {
-      x: unpack(codes, 'cover'),
-      y: unpack(codes, 'code').map(function(x) {return getData(x, zoneC)}),
+    var zoneC= {
+      x: xVals,
+      y: unpack(codes, 'code').map(function(x) {return getData(x, C)}),
       name: 'Zone C',
       type: 'bar'
 
     };
 
-    var data = [traceA,traceB,traceC];
+    var allData = [A,B,C]
+    console.log(allData);
+
+    function makeTrace(obj) {
+      return {
+        x: ['zone A','zone B','zone C'],
+        y: allData.map(function(x) {return getData(obj,x)}),
+        type: 'bar',
+        visible: false,
+      };
+    }
+
+    var newTraces = unpack(codes,'code').map(makeTrace);
+
+    var data = [zoneA,zoneB,zoneC].concat(newTraces);
+
     console.log(data);
 
+    var myPlot = document.getElementById('barExample');
+
+    var button_layer_1_height = 1.12
+    var button_layer_2_height = 1.0
+    var annotation_offset = 0.04
+
+    var updatemenus=[
+      {
+        buttons: [
+          {
+            args: [{'visible': [true, true, true, false, false,false,false,false,false,false,false,false,false,false,false,false]}],
+            label: 'All',
+            method: 'update'
+          },
+          {
+            args: [{'visible': [false, false, false, true, false,false,false,false,false,false,false,false,false,false,false,false]}],
+            label: 'Seagrass',
+            method: 'update'
+          },
+          {
+            args: [{'visible': [false, false, false, false, true,false,false,false,false,false,false,false,false,false,false,false]}],
+            label: 'Nonscleractinian Coral',
+            method: 'update'
+          },
+          {
+            args: [{'visible': [false, false, false, false, false,true,false,false,false,false,false,false,false,false,false,false]}],
+            label: 'Scleractinian Coral',
+            method: 'update'
+          },
+          {
+            args: [{'visible': [false, false, false, false, false,false,true,false,false,false,false,false,false,false,false,false]}],
+            label: 'Coralline Algae',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,true,false,false,false,false,false,false,false,false]}],
+            label: 'Coral',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,true,false,false,false,false,false,false,false]}],
+            label: 'Macroalgae',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,false,true,false,false,false,false,false,false]}],
+            label: 'Turf Algae',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,false,false,true,false,false,false,false,false]}],
+            label: 'Unclassified Algae',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,true,false,false,false,false]}],
+            label: 'Emergent Vegetation',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,true,false,false,false]}],
+            label: 'Giant Clam',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,true,false,false]}],
+            label: 'Nonmobile Inverts',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,false,true,false]}],
+            label: 'None',
+            method: 'update'
+          },{
+            args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,false,false,true]}],
+            label: 'Unclassified',
+            method: 'update'
+          },
+      ],
+        direction: 'left',
+        pad: {'r': 10, 't': 10},
+        showactive: true,
+        type: 'dropdown',
+        direction: 'down',
+        xanchor: 'left',
+        y: 1.2,
+        yanchor: 'top'
+      },
+
+    ]
+
     var layout = {
-      barmode: 'group'
+      barmode: 'group',
+      updatemenus: updatemenus,
+      title: {
+        text: 'Living Cover by Zones'
+      }
     };
 
-    Plotly.newPlot('barExample', data, layout);
+
+
+    Plotly.newPlot('barExample', data, layout, {displayModeBar: false});
+
+
+    myPlot.on('plotly_click', function(data){
+      var pts = '';
+      for(var i=0; i < data.points.length; i++){
+        pts = 'x = '+data.points[i].x +'\ny = '+
+            data.points[i].y.toPrecision(4) + '\n\n';
+      }
+      alert('Closest point clicked:\n\n'+pts);
+    });
 
   });
 </script>
