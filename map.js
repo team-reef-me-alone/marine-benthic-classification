@@ -40,7 +40,90 @@ Plotly.setPlotConfig({
   mapboxAccessToken: "pk.eyJ1IjoibGV2eWplYW4iLCJhIjoiY2tmZzRrdTBhMDF5eTJxcHAyc2oyeTUxbyJ9.4gtxzCh3vsajA99VB5fk7g"
 });
 
-Plotly.plot('plotly-div', {
-  data: data,
-  layout: layout,
+var myPlot = document.getElementById('plotly-div', trace1, data, layout);
+
+Plotly.newPlot('plotly-div', data, layout,);
+
+myPlot.on('plotly_click', d => {
+    var pt = (d.points || [])[0]
+    if(pt.lat == 21.27578 && pt.lon == -157.76205){	
+		console.log('1');
+		var a = document.getElementById("BenthicOne");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27561 && pt.lon == -157.76194){	
+		console.log('2');
+		var a = document.getElementById("BenthicTwo");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.2757 && pt.lon == -157.76229){	
+		console.log('3');
+		var a = document.getElementById("BenthicThree");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27563 && pt.lon == -157.76252){	
+		console.log('4');
+		var a = document.getElementById("BenthicFour");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27556 && pt.lon == -157.76274){	
+		console.log('5');
+		var a = document.getElementById("BenthicFive");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27550 && pt.lon == -157.76294){	
+		console.log('6');
+		var a = document.getElementById("BenthicSix");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27532 && pt.lon == -157.76185){	
+		console.log('7');
+		var a = document.getElementById("BenthicSeven");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27524 && pt.lon == -157.76208){	
+		console.log('8');
+		var a = document.getElementById("BenthicEight");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27517 && pt.lon == -157.76230){	
+		console.log('9');
+		var a = document.getElementById("BenthicNine");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27509 && pt.lon == -157.76251){	
+		console.log('10');
+		var a = document.getElementById("BenthicTen");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27501 && pt.lon == -157.76275){	
+		console.log('11');
+		var a = document.getElementById("BenthicEleven");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27281 && pt.lon == -157.76195){	
+		console.log('12');
+		var a = document.getElementById("BenthicTwelve");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27289 && pt.lon == -157.76171){	
+		console.log('13');
+		var a = document.getElementById("BenthicThirteen");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27298 && pt.lon == -157.76150){	
+		console.log('14');
+		var a = document.getElementById("BenthicFourteen");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27305 && pt.lon == -157.76129){	
+		console.log('15');
+		var a = document.getElementById("BenthicFifteen");
+		a.scrollIntoView({block: "center"});
+	}
+    if(pt.lat == 21.27314 && pt.lon == -157.76105){	
+		console.log('16');
+		var a = document.getElementById("BenthicSixteen");
+		a.scrollIntoView({block: "center"});
+	}
 });
