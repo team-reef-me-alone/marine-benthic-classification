@@ -40,6 +40,9 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
     x: xVals,
     y: unpack(codes, 'code').map(function(x) {return getData(x, A)}),
     name: 'Zone A',
+    marker: {
+      color: '#20C1F0'
+    },
     type: 'bar'
 
   };
@@ -48,6 +51,9 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
     x: xVals,
     y: unpack(codes, 'code').map(function(x) {return getData(x, B)}),
     name: 'Zone B',
+    marker: {
+      color: '#EBDC23'
+    },
     type: 'bar'
 
   };
@@ -56,17 +62,26 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
     x: xVals,
     y: unpack(codes, 'code').map(function(x) {return getData(x, C)}),
     name: 'Zone C',
+    marker: {
+      color: '#EB0C4C'
+    },
     type: 'bar'
 
   };
 
   var allData = [A,B,C]
+  var allTraces = [zoneA,zoneB,zoneC]
   console.log(allData);
+
+  function getColor(obj) {
+    return obj.marker.color;
+  }
 
   function makeTrace(obj) {
     return {
       x: ['zone A','zone B','zone C'],
       y: allData.map(function(x) {return getData(obj,x)}),
+      marker: {color: allTraces.map(getColor)},
       type: 'bar',
       visible: false,
     };
@@ -92,58 +107,58 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
           method: 'update'
         },
         {
-          args: [{'visible': [false, false, false, true, false,false,false,false,false,false,false,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, true, false,false,false,false,false,false,false,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Seagrass',
           method: 'update'
         },
         {
-          args: [{'visible': [false, false, false, false, true,false,false,false,false,false,false,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, true,false,false,false,false,false,false,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Nonscleractinian Coral',
           method: 'update'
         },
         {
-          args: [{'visible': [false, false, false, false, false,true,false,false,false,false,false,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,true,false,false,false,false,false,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Scleractinian Coral',
           method: 'update'
         },
         {
-          args: [{'visible': [false, false, false, false, false,false,true,false,false,false,false,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,true,false,false,false,false,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Coralline Algae',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,true,false,false,false,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,true,false,false,false,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Coral',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,true,false,false,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,true,false,false,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Macroalgae',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,false,true,false,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,false,true,false,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Turf Algae',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,true,false,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,true,false,false,false,false,false]}, {'showlegend': false}],
           label: 'Unclassified Algae',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,true,false,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,true,false,false,false,false]}, {'showlegend': false}],
           label: 'Emergent Vegetation',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,true,false,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,true,false,false,false]}, {'showlegend': false}],
           label: 'Giant Clam',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,true,false,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,true,false,false]}, {'showlegend': false}],
           label: 'Nonmobile Inverts',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,false,true,false]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,false,true,false]}, {'showlegend': false}],
           label: 'None',
           method: 'update'
         },{
-          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,false,false,true]}],
+          args: [{'visible': [false, false, false, false, false,false,false,false,false,false,false,false,false,false,false,true]}, {'showlegend': false}],
           label: 'Unclassified',
           method: 'update'
         },
@@ -163,23 +178,17 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
   var layout = {
     barmode: 'group',
     updatemenus: updatemenus,
+    showlegend: true,
     title: {
-      text: 'Living Cover by Zones'
-    }
+      text: 'Living Cover by Zone'
+    },
+    xaxis: {title: 'Living Cover Type'},
+    yaxis: {title: 'Amount Present', rangemode: 'tozero'}
   };
 
 
 
   Plotly.newPlot('barGraphs', data, layout, {displayModeBar: false});
 
-
-  myPlot.on('plotly_click', function(data){
-    var pts = '';
-    for(var i=0; i < data.points.length; i++){
-      pts = 'x = '+data.points[i].x +'\ny = '+
-          data.points[i].y.toPrecision(4) + '\n\n';
-    }
-    alert('Closest point clicked:\n\n'+pts);
-  });
 
 });
