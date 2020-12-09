@@ -9,7 +9,7 @@ Plotly.d3.csv('data/benthicclassification.csv',
       const data = [{
         lon: unpack(rows, 'Lon'),
         lat: unpack(rows, 'Lat'),
-        radius: 30,
+        radius: 25,
         z: unpack(rows, 'Diversity'),
         type: "densitymapbox",
         coloraxis: 'coloraxis'
