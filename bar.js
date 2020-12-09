@@ -23,19 +23,19 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
   var zoneC = [];
 
   for (i = 0; i < rows.length; i++) {
-    if (rows[i]['Zone'] == 'A') {
+    if (rows[i]['Zone'] === 'A') {
       zoneA.push(rows[i]);
-    } else if (rows[i]['Zone'] == 'B') {
+    } else if (rows[i]['Zone'] === 'B') {
       zoneB.push(rows[i]);
     } else {
       zoneC.push(rows[i]);
-    };
-  };
+    }
+  }
 
   function getData(lc, lcArray) {
     var num = 0;
     for (i = 0; i < lcArray.length; i++) {
-      if (lc == lcArray[i]['Livingcover']) {
+      if (lc === lcArray[i]['Livingcover']) {
         num++;
       }
     }
