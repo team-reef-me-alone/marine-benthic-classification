@@ -41,7 +41,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
     y: unpack(codes, 'code').map(function(x) {return getData(x, A)}),
     name: 'Zone A',
     marker: {
-      color: '#20C1F0'
+      color: 'rgb(255,165,0)'
     },
     type: 'bar'
 
@@ -52,7 +52,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
     y: unpack(codes, 'code').map(function(x) {return getData(x, B)}),
     name: 'Zone B',
     marker: {
-      color: '#EBDC23'
+      color: 'rgb(173,255,47)'
     },
     type: 'bar'
 
@@ -63,7 +63,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/team-reef-me-alone/marine-benth
     y: unpack(codes, 'code').map(function(x) {return getData(x, C)}),
     name: 'Zone C',
     marker: {
-      color: '#EB0C4C'
+      color: 'rgb(238,130,238)'
     },
     type: 'bar'
 

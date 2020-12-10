@@ -70,7 +70,8 @@ layout = {
 };
 
 Plotly.setPlotConfig({
-  mapboxAccessToken: "pk.eyJ1IjoibGV2eWplYW4iLCJhIjoiY2tmZzRrdTBhMDF5eTJxcHAyc2oyeTUxbyJ9.4gtxzCh3vsajA99VB5fk7g"
+  mapboxAccessToken: "pk.eyJ1IjoibGV2eWplYW4iLCJhIjoiY2tmZzRrdTBhMDF5eTJxcHAyc2oyeTUxbyJ9.4gtxzCh3vsajA99VB5fk7g",
+displayModeBar: false
 });
 
 var myPlot = document.getElementById('plotly-div', trace1, data, layout);
