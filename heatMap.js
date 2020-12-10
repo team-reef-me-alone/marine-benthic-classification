@@ -16,6 +16,8 @@ Plotly.d3.csv('data/benthicclassification.csv',
       }]
 
       const layout = {
+      width: 1100,
+        height: 1100,
         mapbox: {
           center: { lon: -157.7614683913925, lat: 21.274110921130642 },
           style: "outdoors",
