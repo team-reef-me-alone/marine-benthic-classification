@@ -40,6 +40,8 @@ trace3 = {
 };
 data = [trace1, trace2, trace3];
 layout = {
+  width: 1200,
+  height: 1200,
   xaxis: {
     range: [-1, 6], 
     autorange: true
